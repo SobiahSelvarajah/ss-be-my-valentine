@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useMemo } from "react";
 
 
 export default function Page() {
@@ -8,8 +8,36 @@ export default function Page() {
   const boyfriendName = "Daniel";
   const girlfriendName = "Sobiah";
 
+  // initial ask state
+  const [ initialStage, setInitialStage ] = useState("ask");
+  // No button behaviour
+  const [ noIndex, setNoIndex ] = useState(0);
+  const [ noOffset, setNoOffset ] = useState({ x:0, y:0 });
+
+  const noResponses = useMemo( 
+    () => [
+      "No 😧",
+      "Nope nope 🙂‍↔️",
+      "Wait--",
+      "Hold up boo boo ✋",
+      "Think this through mister 🤨",
+      "Be serious 🧐",
+      "Not an option 😘",
+      "Okay but...yes right?"
+    ],
+    []
+  );
+
+  function dodgeNo() {
+    const x = Math.floor(Math.random() * 120) - 60;
+    const y = Math.floor(Math.random() * 90) - 45;
+    setNoOffset({ x, y });
+    setNoIndex( (i) => (i+1) % noResponses.length );
+  };
+
   return(
-    <main className="min-h-screen grid place-items-center px-6 py-10 bg-black text-white">
+    <main className="min-h-screen grid place-items-center 
+                     px-6 py-10 bg-black text-white">
 
       {/* ======================================== */}
       {/*              HEADER / INTRO              */}
@@ -17,7 +45,7 @@ export default function Page() {
       <header
         className="w-full max-w-xl text-center space-y-8"
       >
-        <p className="text-sm italic text-white/40">
+        <p className="text-sm italic text-white/30">
           Made with love (and {girlfriendName}'s code)
         </p>
         <h1 className="text-3xl sm:text-4xl font-semibold">
@@ -29,21 +57,56 @@ export default function Page() {
       {/*            ASK (initial) STATE           */}
       {/*      conditionally shown and hidden      */}
       {/* ======================================== */}
-      <section id="ask-state">
-        <p>
-          I made a website because I'm a
-          web developer and also because
-          I'm ridiculously into you.
-          <br/>
-          So...important question:
-        </p>
-        <h2>Will you be my Valentine</h2>
-        <div>
-          <button type="button">Yes 💞</button>
-          <button type="button">No 😧</button>
-        </div>
-        <p>(The "No" button is emotionally unavailable.)</p>
-      </section>
+      {initialStage === "ask" && (
+        <section className="max-w-xl mx-auto mt-10 
+                            text-center space-y-8">
+          <p className="text-white/70 leading-relaxed ">
+            I made a website because I'm a
+            web developer and also because
+            I'm ridiculously into you.
+            <br/>
+            So...important question:
+          </p>
+          <h2 className="text-2xl sm:text-3xl font-semibold 
+                         inline-flex items-center gap-4 
+                         justify-center">
+            <span className="text-sm opacity-70">♡</span>
+            <span>Will you be my Valentine?</span>
+            <span className="text-sm opacity-70">♡</span>
+          </h2>
+          <div className="relative h-24 flex justify-center 
+                          items-center">
+            <button 
+              type="button"
+              onClick={() => setInitialStage("yes")}
+              className="px-6 py-3 rounded-full text-sm 
+                         font-medium bg-white/90 
+                         text-black hover:bg-white
+                         transition"
+            >
+              Yes 💞
+            </button>
+            <div className="relative w-[240px] h-16 ml-6 sm:ml-10">
+              <button 
+                type="button"
+                onMouseEnter={dodgeNo}
+                onClick={dodgeNo}
+                className="absolute left-0 top-1/2 -translate-y-1/2 
+                           px-6 py-3 rounded-full text-sm font-medium 
+                           border border-white/30 text-white 
+                           transition-transform"
+                style={{ transform: `translate(${noOffset.x}px, ${noOffset.y}px)` }}
+              > 
+                {noResponses[noIndex]}
+              </button>              
+            </div>
+          </div>
+          <p className="text-xs text-white/60">
+            (The "No" button is emotionally unavailable.)
+          </p>
+        </section>        
+      )}
+
 
       <hr/>
 
