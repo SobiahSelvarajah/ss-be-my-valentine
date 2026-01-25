@@ -1,15 +1,28 @@
+"use client";
+
+import { useState } from "react";
 
 
 export default function Page() {
+
+  const boyfriendName = "Daniel";
+  const girlfriendName = "Sobiah";
+
   return(
-    <main>
+    <main className="min-h-screen grid place-items-center px-6 py-10 bg-black text-white">
 
       {/* ======================================== */}
       {/*              HEADER / INTRO              */}
       {/* ======================================== */}
-      <header>
-        <p>Made with love (and Sobiah's code)</p>
-        <h1>Hi Daniel 💕</h1>
+      <header
+        className="w-full max-w-xl text-center space-y-8"
+      >
+        <p className="text-sm italic text-white/40">
+          Made with love (and {girlfriendName}'s code)
+        </p>
+        <h1 className="text-3xl sm:text-4xl font-semibold">
+          Hi {boyfriendName} 💕
+        </h1>
       </header>
 
       {/* ======================================== */}
