@@ -53,6 +53,7 @@ export default function Page() {
         </h1>
       </header>
 
+
       {/* ======================================== */}
       {/*            ASK (initial) STATE           */}
       {/*      conditionally shown and hidden      */}
@@ -106,60 +107,73 @@ export default function Page() {
           </p>
         </section>        
       )}
-
-
       <hr/>
+
 
       {/* ======================================== */}
       {/*   YES STATE - Shown after clicking yes   */}
       {/*  if clicked, this replaces the ask state */}
       {/* ======================================== */}
-      <section id="yes-state">
-        <h2>
-          Mission accomplished: 
-          Valentines acquired 💘
-        </h2>
-        <p>No spoilers 🙃</p>
-        <p>
-          I've planned everything 
-          and I'm spoiling you.
-        </p>
-
-        {/* ======================================== */}
-        {/*         Spoiler free instructions        */}
-        {/* ======================================== */}
-        <h3>Your only instructions:</h3>
-        <ul>
-          <li>Show up hot and handsome (as always).</li>
-          <li>Dress code: Formal wear (Black, red or both for colour).</li>
-          <li>Meet up at King's Cross by 11:30 or earlier.</li>
-        </ul>
-        <p>P.S. I reserve the right to stay superglued to you the whole time.</p>
-
-        {/* ======================================== */}
-        {/*            FAKE REVEAL BUTTON            */}
-        {/*        triggers laughing cat meme        */}
-        {/* ======================================== */}
-        <div>
-          <p>Nice try 😂</p>
-          <p>(Insert laughing cat meme here)</p>
-          <p>No spoilers. Patience darling 😘</p>
-        </div>
-
-        {/* ======================================== */}
-        {/*               REPLAY BUTTON              */}
-        {/* ======================================== */}
-        <div>
-          <button type="button">Replay 😄</button>
-        </div>
-
-        <footer>
-          <p>
-            Made for Daniel. From Sobiah.
-            With a scandalous amount of affection.
+      {initialStage === "yes" && (
+        <section className="max-w-xl mx-auto mt-10 text-center space-y-8">
+          <h2 className="text-2xl sm:text-3xl font-semibold 
+                         inline-flex items-center justify-center 
+                         gap-4">
+            <span className="text-sm opacity-70">♡</span>
+            <span>YAY! It's a date.</span>
+            <span className="text-sm opacity-70">♡</span>
+          </h2>          
+          <p className="text-sm text-white/60">
+            Mission accomplished: 
+            Valentines acquired 💘
           </p>
-        </footer>
-      </section>
+          <p className="text-white/70 leading-relaxed">
+            No spoilers 🙃
+            <br/>
+            I've planned everything 
+            and I'm spoiling you.
+          </p>
+
+
+
+
+
+          {/* ======================================== */}
+          {/*         Spoiler free instructions        */}
+          {/* ======================================== */}
+          <h3>Your only instructions:</h3>
+          <ul>
+            <li>Show up hot and handsome (as always).</li>
+            <li>Dress code: Formal wear (Black, red or both for colour).</li>
+            <li>Meet up at King's Cross by 11:30 or earlier.</li>
+          </ul>
+          <p>P.S. I reserve the right to stay superglued to you the whole time.</p>
+
+          {/* ======================================== */}
+          {/*            FAKE REVEAL BUTTON            */}
+          {/*        triggers laughing cat meme        */}
+          {/* ======================================== */}
+          <div>
+            <p>Nice try 😂</p>
+            <p>(Insert laughing cat meme here)</p>
+            <p>No spoilers. Patience darling 😘</p>
+          </div>
+
+          {/* ======================================== */}
+          {/*               REPLAY BUTTON              */}
+          {/* ======================================== */}
+          <div>
+            <button type="button">Replay 😄</button>
+          </div>
+
+          <footer>
+            <p>
+              Made for Daniel. From Sobiah.
+              With a scandalous amount of affection.
+            </p>
+          </footer>
+        </section>        
+      )}
     </main>
   );
 };
