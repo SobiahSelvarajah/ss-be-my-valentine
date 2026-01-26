@@ -13,6 +13,7 @@ export default function Page() {
   // No button behaviour
   const [ noIndex, setNoIndex ] = useState(0);
   const [ noOffset, setNoOffset ] = useState({ x:0, y:0 });
+  const [ fakeReveal, setFakeReveal ] = useState(false);
 
   const noResponses = useMemo( 
     () => [
@@ -127,7 +128,7 @@ export default function Page() {
             Mission accomplished: 
             Valentines acquired 💘
           </p>
-          <p className="text-white/70 leading-relaxed">
+          <p className="text-white/50 leading-relaxed">
             No spoilers 🙃
             <br/>
             I've planned everything 
@@ -135,19 +136,41 @@ export default function Page() {
           </p>
 
 
-
-
-
           {/* ======================================== */}
           {/*         Spoiler free instructions        */}
           {/* ======================================== */}
-          <h3>Your only instructions:</h3>
-          <ul>
-            <li>Show up hot and handsome (as always).</li>
-            <li>Dress code: Formal wear (Black, red or both for colour).</li>
-            <li>Meet up at King's Cross by 11:30 or earlier.</li>
-          </ul>
-          <p>P.S. I reserve the right to stay superglued to you the whole time.</p>
+          <div className="text-left border border-white/15 
+                          rounded-2xl p-6 bg-white/5">
+            {!fakeReveal ? (
+              <>
+                <p className="text-sm text-white/60">
+                  Your only instructions:
+                </p>
+                <ul className="mt-4 space-y-2 text-white/80">
+                  <li>😎 Show up hot and handsome (as always).</li>
+                  <li>✨ Dress code: Formal wear (Black, red or both for colour).</li>
+                  <li>🚂 Meet up at King's Cross by 11:30 or earlier.</li>
+                </ul>
+                <p className="mt-4 text-xs text-white/60">
+                  **P.S. I reserve the right to stay superglued to you the whole time**
+                </p>
+              </>
+            ) : 
+            (
+              <div></div>
+            )}
+          </div>
+
+
+
+
+
+
+          
+
+
+
+
 
           {/* ======================================== */}
           {/*            FAKE REVEAL BUTTON            */}
