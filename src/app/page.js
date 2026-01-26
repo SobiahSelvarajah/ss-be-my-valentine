@@ -154,9 +154,21 @@ export default function Page() {
                 <p className="mt-4 text-xs text-white/60">
                   **P.S. I reserve the right to stay superglued to you the whole time**
                 </p>
+                <div className="mt-6 text-center">
+                  <button
+                    type="button"
+                    onClick={() => setTriedToReveal(true)}
+                    className="px-6 py-3 rounded-2xl 
+                               text-sm font-medium 
+                               border border-white/20 
+                               text-white hover:bg-white/10 
+                               transition"
+                  >
+                    Reveal the plan 👀
+                  </button>
+                </div>                
               </>
-            ) : 
-            (
+            ) : (
               <div></div>
             )}
           </div>
