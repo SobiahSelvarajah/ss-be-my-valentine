@@ -2,11 +2,12 @@
 
 import { useState, useMemo } from "react";
 
-
 export default function Page() {
 
   const boyfriendName = "Daniel";
   const girlfriendName = "Sobiah";
+
+  const laughingCat = "/images/laughing-cat.gif";
 
   // initial ask state
   const [ initialStage, setInitialStage ] = useState("ask");
@@ -154,6 +155,12 @@ export default function Page() {
                 <p className="mt-4 text-xs text-white/60">
                   **P.S. I reserve the right to stay superglued to you the whole time**
                 </p>
+
+
+                {/* ======================================== */}
+                {/*            FAKE REVEAL BUTTON            */}
+                {/*        triggers laughing cat meme        */}
+                {/* ======================================== */}                
                 <div className="mt-6 text-center">
                   <button
                     type="button"
@@ -184,10 +191,7 @@ export default function Page() {
 
 
 
-          {/* ======================================== */}
-          {/*            FAKE REVEAL BUTTON            */}
-          {/*        triggers laughing cat meme        */}
-          {/* ======================================== */}
+
           <div>
             <p>Nice try 😂</p>
             <p>(Insert laughing cat meme here)</p>
