@@ -37,6 +37,14 @@ export default function Page() {
     setNoIndex( (i) => (i+1) % noResponses.length );
   };
 
+  function replay() {
+    setInitialStage("ask");
+    setFakeReveal(false);
+    setNoIndex(0);
+    setNoOffset({ x:0, y:0 });
+  }
+
+
   return(
     <main className="min-h-screen grid place-items-center 
                      px-6 py-10 bg-black text-white">
@@ -217,7 +225,14 @@ export default function Page() {
           {/*               REPLAY BUTTON              */}
           {/* ======================================== */}
           <div>
-            <button type="button">Replay 😄</button>
+            <button 
+              type="button"
+              onClick={replay}
+              className="mt-4 mb-2 text-xs text-white 
+                        hover:text-white/80 
+                        transition">
+                ~ Replay 😄 ~
+            </button>
           </div>
 
           <footer>
