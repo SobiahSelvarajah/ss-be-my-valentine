@@ -221,8 +221,9 @@ export default function Page() {
           </div>
 
           <footer>
-            <p>
-              Made for Daniel. From Sobiah.
+            <p className="text-xs text-white/50 
+                          italic tracking-wide">
+              Made for {boyfriendName}. From {girlfriendName}.
               With a scandalous amount of affection.
             </p>
           </footer>
