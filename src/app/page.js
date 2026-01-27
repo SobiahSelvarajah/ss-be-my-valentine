@@ -117,24 +117,29 @@ export default function Page() {
       {/*  if clicked, this replaces the ask state */}
       {/* ======================================== */}
       {initialStage === "yes" && (
-        <section className="max-w-xl mx-auto mt-10 text-center space-y-8">
-          <h2 className="text-2xl sm:text-3xl font-semibold 
-                         inline-flex items-center justify-center 
-                         gap-4">
-            <span className="text-sm opacity-70">♡</span>
-            <span>YAY! It's a date.</span>
-            <span className="text-sm opacity-70">♡</span>
-          </h2>          
-          <p className="text-sm text-white/60">
-            Mission accomplished: 
-            Valentines acquired 💘
-          </p>
-          <p className="text-white/50 leading-relaxed">
-            No spoilers 🙃
-            <br/>
-            I've planned everything 
-            and I'm spoiling you.
-          </p>
+        <section className="max-w-xl mx-auto mt-10 
+                            text-center space-y-8">
+          {!fakeReveal && (
+            <>
+              <h2 className="text-2xl sm:text-3xl font-semibold 
+                            inline-flex items-center justify-center 
+                            gap-4">
+                <span className="text-sm opacity-70">♡</span>
+                <span>YAY! It's a date.</span>
+                <span className="text-sm opacity-70">♡</span>
+              </h2>          
+              <p className="text-sm text-white/60">
+                Mission accomplished: 
+                Valentines acquired 💘
+              </p>
+              <p className="text-white/50 leading-relaxed">
+                No spoilers 🙃
+                <br/>
+                I've planned everything 
+                and I'm spoiling you.
+              </p>              
+            </>
+          )}
 
 
           {/* ======================================== */}
@@ -153,7 +158,8 @@ export default function Page() {
                   <li>🚂 Meet up at King's Cross by 11:30 or earlier.</li>
                 </ul>
                 <p className="mt-4 text-xs text-white/60">
-                  **P.S. I reserve the right to stay superglued to you the whole time**
+                  **P.S. I reserve the right to stay 
+                  superglued to you the whole time**
                 </p>
 
 
@@ -164,7 +170,7 @@ export default function Page() {
                 <div className="mt-6 text-center">
                   <button
                     type="button"
-                    onClick={() => setTriedToReveal(true)}
+                    onClick={() => setFakeReveal(true)}
                     className="px-6 py-3 rounded-2xl 
                                text-sm font-medium 
                                border border-white/20 
@@ -176,27 +182,36 @@ export default function Page() {
                 </div>                
               </>
             ) : (
-              <div></div>
+              <div className="text-center space-y-4">
+                <p className="text-lg font-medium">
+                  Nice try 😄
+                </p>
+                <img
+                  src={laughingCat}
+                  alt="Laughing cat meme"
+                  className="w-full max-w-xs mx-auto 
+                             mt-5 mb-5 rounded-[3rem] 
+                             opacity-70"
+                />
+                <p className="text-m text-white/70">
+                  No spoilers. Patience darling 😘
+                </p>
+
+                <button
+                  type="button"
+                  onClick={() => setFakeReveal(false)}
+                  className="px-6 py-3 rounded-full 
+                             text-sm font-medium 
+                             border border-white/20 
+                             text-white hover:bg-white/10 
+                             transition"
+                >
+                  Back to instructions
+                </button>
+              </div>
             )}
           </div>
 
-
-
-
-
-
-          
-
-
-
-
-
-
-          <div>
-            <p>Nice try 😂</p>
-            <p>(Insert laughing cat meme here)</p>
-            <p>No spoilers. Patience darling 😘</p>
-          </div>
 
           {/* ======================================== */}
           {/*               REPLAY BUTTON              */}
