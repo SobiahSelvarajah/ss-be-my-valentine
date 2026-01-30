@@ -31,8 +31,13 @@ export default function Page() {
   );
 
   function dodgeNo() {
-    const x = Math.floor(Math.random() * 120) - 60;
-    const y = Math.floor(Math.random() * 90) - 45;
+    const isMobile = window.innerWidth < 640;
+    const xRange = isMobile ? 60 : 80;
+    const yRange = isMobile ? 20 : 35;
+
+    const x = Math.floor(Math.random() * (xRange * 2)) - xRange;
+    const y = Math.floor(Math.random() * (yRange * 2)) - yRange;
+
     setNoOffset({ x, y });
     setNoIndex( (i) => (i+1) % noResponses.length );
   };
@@ -111,7 +116,7 @@ export default function Page() {
                   className="absolute left-0 top-1/2 -translate-y-1/2 
                             px-6 py-3 rounded-full text-sm font-medium 
                             border border-white/30 text-white 
-                            transition-transform"
+                            transition-transform duration-150 ease-out"
                   style={{ transform: `translate(${noOffset.x}px, ${noOffset.y}px)` }}
                 > 
                   {noResponses[noIndex]}
